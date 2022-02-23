@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+}
+.info_condition {
+}
+.info_degree {
+  font-size: 100px;
+}
+.info_bottom_container {
+  display: flex;
+  justify-content: space-between;
+}
+.info_windSpeed {
+  margin: 0px 10px 0px 10px;
+}
+.info_wind_icon {
+  color: black;
+  margin: 0px 10px 0px 10px;
+}
+.info_humidity {
+  margin: 0px 10px 0px 10px;
+}
+.info_humidity_icon {
+  color: black;
+  margin: 0px 10px 0px 10px;
+}
