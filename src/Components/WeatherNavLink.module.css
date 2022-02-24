@@ -1,0 +1,20 @@
+.day {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: rgb(199, 199, 199);
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 400;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+}
+:active {
+  color: black;
+}
+.day:hover {
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+}

@@ -8,6 +8,9 @@ html *:after {
 }
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   max-width: 42em;
   padding: 2em;
   margin: 0 auto;
@@ -17,8 +20,9 @@ body {
   background-color: currentColor;
 }
 .app-container {
-  border: 5px solid white;
-  width: 600px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 10px rgb(255, 174, 0);
+  width: 400px;
   height: 900px;
 }
 .btn-container {
@@ -28,7 +32,77 @@ body {
   border: 5px solid blue;
 }
 .search-container {
-  border: 5px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+}
+.search-form-input {
+  border: none;
+  border-bottom: 1px solid gray;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  text-indent: 10px;
+}
+.search-form-input {
+  height: 2rem;
+  font-size: 1.5rem;
+  border: none;
+  border-bottom: 1px solid rgb(41, 41, 41, 0.5);
+}
+.search-form-input:focus {
+  outline: none;
+}
+.search-form-btn {
+  background-color: rgb(25, 25, 25, 0.9);
+  border: 1px solid rgb(25, 25, 25);
+  border-radius: 4px;
+  margin-left: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  outline: none;
+  outline: 0;
+  padding: 8px 16px;
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 150ms, box-shadow 150ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.search-form-btn:hover {
+  background-color: rgb(25, 25, 25, 1);
+  box-shadow: rgba(0, 0, 0, 0.15) 0 3px 9px 0;
+  transform: translateY(-1px);
+}
+.title-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title-cityName {
+  margin: 10px 5px 0px 5px;
+}
+.title-countryName {
+  margin: 10px 5px 0px 5px;
+}
+.title-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 5px 2px 5px;
+}
+.title-container i {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.7em;
 }
 h1 {
   margin-bottom: 1.375em;
@@ -50,7 +124,7 @@ p {
   position: relative;
   display: inline-block;
   width: 12em;
-  height: 10em;
+  height: 5em;
   font-size: 1em; /* control icon size here */
 }
 

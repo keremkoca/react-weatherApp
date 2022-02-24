@@ -3,9 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: red;
-}
-.info_condition {
+  color: white;
 }
 .info_degree {
   font-size: 100px;
@@ -18,13 +16,13 @@
   margin: 0px 10px 0px 10px;
 }
 .info_wind_icon {
-  color: black;
+  color: white;
   margin: 0px 10px 0px 10px;
 }
 .info_humidity {
   margin: 0px 10px 0px 10px;
 }
 .info_humidity_icon {
-  color: black;
+  color: white;
   margin: 0px 10px 0px 10px;
 }

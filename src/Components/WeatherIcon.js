@@ -1,10 +1,13 @@
 import React from "react";
+import Context from "../Utils/context";
+import { useContext } from "react";
 import "./WeatherIcon.css";
 function WeatherIcon(props) {
-  const { type, className } = props;
+  const { stateDataReducer: state } = useContext(Context);
+
   const handleIcon = (weather) => {
     switch (weather) {
-      case "cloudy":
+      case "Clouds":
         return (
           <div className="icon">
             <div className="cloud">
@@ -14,7 +17,7 @@ function WeatherIcon(props) {
           </div>
         );
 
-      case "sunny":
+      case "Clear":
         return (
           <div className="icon">
             <div className="sun">
@@ -33,7 +36,7 @@ function WeatherIcon(props) {
           </div>
         );
 
-      case "rainy":
+      case "Rain":
         return (
           <div className="icon">
             <div className="cloud"></div>
@@ -72,7 +75,7 @@ function WeatherIcon(props) {
         </div>;
     }
   };
-  return <div className={className}>{handleIcon(type)}</div>;
+  return <div className="container">{handleIcon(state.condition)}</div>;
 }
 
 export default WeatherIcon;
