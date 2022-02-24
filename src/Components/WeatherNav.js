@@ -14,7 +14,6 @@ function WeatherNav(props) {
     return updatedDays;
   };
   const handleOnClick = (event) => {
-    if (count - 1 < 0 || count + 1 > 8) return;
     event.target.name === "minus"
       ? setCount((prev) => prev - 1)
       : setCount((prev) => prev + 1);
