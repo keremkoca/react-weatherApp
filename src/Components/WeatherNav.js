@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import classes from "./WeatherNav.module.css";
 import WeatherNavLink from "./WeatherNavLink";
 import { useContext, useState } from "react";
 import Context from "../Utils/context";
 function WeatherNav(props) {
   const { stateDataReducer: state } = useContext(Context);
+  console.log(state.daily, state.daily.length);
   const [count, setCount] = useState(0);
+  const [daysToDisplay, setDaysToDisplay] = useState([]);
   const addToDisplay = (days) => {
     const updatedDays = [];
     for (let i = count; i <= count + 2; i++) {
@@ -13,27 +15,27 @@ function WeatherNav(props) {
     }
     return updatedDays;
   };
-  const handleOnClick = (event) => {
-    event.target.name === "minus"
-      ? setCount((prev) => prev - 1)
-      : setCount((prev) => prev + 1);
-  };
-  const daysToDisplay = addToDisplay(state.daily);
+  useEffect(() => {
+    setDaysToDisplay(addToDisplay(state.daily));
+  }, [count]);
+
   console.log(daysToDisplay);
   return (
     <div className={classes.navContainer}>
       <button
         className={classes.left_btn}
-        name="minus"
-        onClick={handleOnClick}
+        onClick={() => {
+          count > 0 && setCount(count - 1);
+        }}
       ></button>
       {daysToDisplay.map((day) => {
         return <WeatherNavLink key={day.dt} day={day.dt}></WeatherNavLink>;
       })}
       <button
         className={classes.right_btn}
-        name="plus"
-        onClick={handleOnClick}
+        onClick={() => {
+          count <= state.daily.length / 2 && setCount(count + 1);
+        }}
       ></button>
     </div>
   );

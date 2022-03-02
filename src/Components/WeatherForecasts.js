@@ -5,7 +5,6 @@ import axios from "axios";
 import WeatherNav from "./WeatherNav";
 const API_URL = "https://api.openweathermap.org/data/2.5/onecall?";
 const API_KEY = "5711a2c595f4af4f4115773f743ecbdc";
-
 function WeatherForecasts() {
   const { stateDataReducer: state, dispatchDataReducer: dispatch } =
     useContext(Context);
