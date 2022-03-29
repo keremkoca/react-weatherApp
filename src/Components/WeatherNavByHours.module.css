@@ -1,0 +1,81 @@
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 20px;
+  align-items: center;
+  width: 400px;
+  background-color: transparent;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  background-color: transparent;
+}
+.navContainerHeader {
+  display: flex;
+  width: 80%;
+}
+.navContainerHeader h3 {
+  margin: 0;
+  color: white;
+  margin-left: 10px;
+  font-size: 18px;
+}
+.navItemContainer {
+  display: flex;
+  overflow: hidden;
+}
+.navItemInnerContainer {
+  display: flex;
+}
+.left_btn {
+  border-left: none;
+  background-color: transparent;
+  border-top: 10px solid transparent;
+  border-right: 15px solid rgb(41, 41, 41);
+  border-bottom: 10px solid transparent;
+  cursor: pointer;
+}
+.right_btn {
+  background-color: transparent;
+  border-right: none;
+  border-top: 10px solid transparent;
+  border-left: 15px solid rgb(41, 41, 41);
+  border-bottom: 10px solid transparent;
+  cursor: pointer;
+}
+.slideToRight {
+  position: relative;
+  animation: toRight;
+  animation-duration: 0.3s;
+  animation-direction: alternate;
+}
+.slideToLeft {
+  position: relative;
+  animation: toLeft;
+  animation-duration: 0.3s;
+  animation-direction: alternate;
+}
+
+@keyframes toRight {
+  0% {
+    left: -400px;
+  }
+
+  100% {
+    left: 0px;
+  }
+}
+@keyframes toLeft {
+  0% {
+    right: -400px;
+  }
+
+  100% {
+    right: 0px;
+  }
+}
