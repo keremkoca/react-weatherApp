@@ -1,0 +1,21 @@
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.titleIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 5px 2px 5px;
+}
+.titleContainer i {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 1.7em;
+}
+.titleCityName {
+  margin: 10px 5px 0px 5px;
+}
+.titleCountryName {
+  margin: 10px 5px 0px 5px;
+}
