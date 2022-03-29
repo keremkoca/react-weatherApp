@@ -1,20 +1,28 @@
-.day {
+.container {
   display: flex;
   align-items: center;
   text-decoration: none;
+  flex-direction: column;
   font-family: sohne, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: rgb(199, 199, 199);
   font-size: 18px;
   line-height: 20px;
   font-weight: 400;
   padding: 0 1rem;
-  height: 100%;
   cursor: pointer;
 }
-:active {
-  color: black;
+
+.date {
+  margin-bottom: 10px;
 }
-.day:hover {
-  transform: scale(1.1);
-  transition: all 0.2s ease-in-out;
+.icon {
+  position: relative;
+  color: #161616;
+  width: 12em;
+  height: 10em;
+  font-size: 1.5em; /* control icon size here */
+  font-size: 0.2em;
+}
+.dateData {
+  margin-top: 20px;
 }

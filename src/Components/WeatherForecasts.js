@@ -3,6 +3,7 @@ import classes from "./WeatherForecasts.module.css";
 import Context from "../Utils/context";
 import axios from "axios";
 import WeatherNav from "./WeatherNav";
+import WeatherNavByHours from "./WeatherNavByHours";
 const API_URL = "https://api.openweathermap.org/data/2.5/onecall?";
 const API_KEY = "5711a2c595f4af4f4115773f743ecbdc";
 function WeatherForecasts() {
@@ -16,7 +17,6 @@ function WeatherForecasts() {
     axios
       .get(FULL_API_URL)
       .then((response) => {
-        console.log(response, "girdi");
         dispatch({
           type: "GET_WEATHERFORECAST",
           payload: response.data,
@@ -26,10 +26,12 @@ function WeatherForecasts() {
       .catch((error) => {
         console.log(error);
       });
-  }, []);
+  }, [lat, lon]);
+
   return (
     <div className={classes.container}>
-      {isLoaded && <WeatherNav></WeatherNav>}
+      {isLoaded && <WeatherNavByHours />}
+      {isLoaded && <WeatherNav />}
     </div>
   );
 }

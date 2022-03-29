@@ -14,6 +14,7 @@ export const initialState = {
   daily: [],
   hourly: [],
 };
+
 export const DataReducer = (state = initialState, action) => {
   switch (action.type) {
     case "ON_LOAD":
@@ -31,10 +32,48 @@ export const DataReducer = (state = initialState, action) => {
         humidity: action.payload.main.humidity,
       };
     case "GET_WEATHERFORECAST":
+      const currentDayNum = new Date(
+        action.payload.daily[0].dt * 1000
+      ).getDate();
+      const createCurrentDayHours = (current) => {
+        const currentDayHours = [];
+        action.payload.hourly.map((date) => {
+          const dateNum = new Date(date.dt * 1000).getDate();
+          if (current === dateNum) {
+            currentDayHours.push(date);
+          }
+          return currentDayHours;
+        });
+        return currentDayHours;
+      };
       return {
         ...state,
         daily: action.payload.daily,
         hourly: action.payload.hourly,
+        currentDay: action.payload.daily[0],
+        currentDayHours: createCurrentDayHours(currentDayNum),
+      };
+    case "SELECT_DAY":
+      let selectedDayNum = action.payload;
+      const selectedDayHours = [];
+      const currentDay = state.daily.find((day) => {
+        const dayNum = new Date(day.dt * 1000).getDate();
+        console.log(dayNum);
+        if (dayNum === selectedDayNum) return dayNum;
+      });
+      state.hourly.map((day) => {
+        const dayNum = new Date(day.dt * 1000).getDate();
+
+        if (dayNum === selectedDayNum) {
+          selectedDayHours.push(day);
+        }
+        return selectedDayHours;
+      });
+      console.log(state);
+      return {
+        ...state,
+        currentDayHours: selectedDayHours,
+        currentDay: currentDay,
       };
 
     default:

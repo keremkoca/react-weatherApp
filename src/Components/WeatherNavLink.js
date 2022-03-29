@@ -1,24 +1,16 @@
 import React from "react";
 import classes from "./WeatherNavLink.module.css";
-const dateConverter = (date) => {
-  const today = new Date();
-  const newDate = new Date(date * 1000);
-  const weekOptions = { weekday: "short" };
-  const monthOptions = { month: "short" };
-  const [month, dayNum, weekDay] = [
-    new Intl.DateTimeFormat("en-US", monthOptions).format(newDate),
-    newDate.getDate(),
-    new Intl.DateTimeFormat("en-US", weekOptions).format(newDate),
-  ];
-  return `${
-    today.getDate() === dayNum ? "Today" : weekDay
-  }, ${dayNum} ${month}`;
-};
+import { dateConverter, kelvinToCelcius } from "../functions/functions";
+import WeatherIcon from "./WeatherIcon";
 function WeatherNavLink(props) {
-  const { day } = props;
+  const { day, dayData } = props;
   return (
-    <div className={classes.day} key={day.dt}>
-      {dateConverter(day)}
+    <div className={`${props.className} ${classes.container}`}>
+      <div className={classes.date}>{dateConverter(day)}</div>
+      <WeatherIcon className={classes.icon} type={dayData.weather[0].main} />
+      <div className={classes.dateData}>
+        {kelvinToCelcius(dayData.temp.day)}°
+      </div>
     </div>
   );
 }
