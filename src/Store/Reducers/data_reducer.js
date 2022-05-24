@@ -1,16 +1,28 @@
 export const initialState = {
   dt: null,
-  feels_like: null,
-  windSpeedK: null,
-  tempratureC: null,
+  main: {
+    feels_like: null,
+    humidity: null,
+    tempratureC: null,
+  },
+  wind: {
+    windSpeedK: null,
+  },
+  sys: {
+    countryName: null,
+    sunrise: null,
+    sunset: null,
+  },
+  weather: [
+    {
+      condition: null,
+    },
+  ],
   cityName: null,
-  countryName: null,
-  generalData: null,
-  condition: null,
-  description: null,
-  sunrise: null,
-  sunset: null,
-  humidity: null,
+  coord: {
+    lat: null,
+    lon: null,
+  },
   daily: [],
   hourly: [],
 };
@@ -20,11 +32,14 @@ export const DataReducer = (state = initialState, action) => {
     case "ON_LOAD":
       return {
         ...state,
-        windSpeedK: action.payload.wind.speed,
+        wind: { windSpeedK: action.payload.wind.speed },
         tempratureK: action.payload.main.temp,
         cityName: action.payload.name,
         countryName: action.payload.sys.country,
-        generalData: action.payload,
+        coord: {
+          lat: action.payload.coord.lat,
+          lon: action.payload.coord.lon,
+        },
         condition: action.payload.weather[0].main,
         description: action.payload.weather[0].description,
         sunrise: action.payload.sys.sunrise,
@@ -52,28 +67,6 @@ export const DataReducer = (state = initialState, action) => {
         hourly: action.payload.hourly,
         currentDay: action.payload.daily[0],
         currentDayHours: createCurrentDayHours(currentDayNum),
-      };
-    case "SELECT_DAY":
-      let selectedDayNum = action.payload;
-      const selectedDayHours = [];
-      const currentDay = state.daily.find((day) => {
-        const dayNum = new Date(day.dt * 1000).getDate();
-        console.log(dayNum);
-        if (dayNum === selectedDayNum) return dayNum;
-      });
-      state.hourly.map((day) => {
-        const dayNum = new Date(day.dt * 1000).getDate();
-
-        if (dayNum === selectedDayNum) {
-          selectedDayHours.push(day);
-        }
-        return selectedDayHours;
-      });
-      console.log(state);
-      return {
-        ...state,
-        currentDayHours: selectedDayHours,
-        currentDay: currentDay,
       };
 
     default:

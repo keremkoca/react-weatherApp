@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, useCallback } from "react";
 import classes from "./WeatherNavByHours.module.css";
 import WeatherNavByHoursItem from "./WeatherNavByHoursItem";
 import Context from "../Utils/context";
@@ -10,17 +10,20 @@ function WeatherNavByHours() {
   const [hoursToDisplay, setHoursToDisplay] = useState([]);
   const [slide, setSlide] = useState();
 
-  const addToDisplay = (hours) => {
-    let updatedHours = [];
-    for (let i = count; i <= count + 3; i++) {
-      updatedHours.push(hours[i]);
-    }
-    return updatedHours;
-  };
+  const addToDisplay = useCallback(
+    (hours) => {
+      let updatedHours = [];
+      for (let i = count; i <= count + 3; i++) {
+        updatedHours.push(hours[i]);
+      }
+      return updatedHours;
+    },
+    [count]
+  );
 
   useEffect(() => {
     setHoursToDisplay(addToDisplay(state.hourly));
-  }, [count, state.hourly]);
+  }, [count, state.hourly, addToDisplay]);
   useEffect(() => {
     setCount(0);
   }, [state.currentDayHours]);
@@ -48,13 +51,13 @@ function WeatherNavByHours() {
 
         <div className={classes.navItemContainer}>
           <div className={`${classes.navItemInnerContainer} ${slide}`}>
-            {hoursToDisplay.map((hour) => {
+            {hoursToDisplay.map((hour, index) => {
               return (
                 <WeatherNavByHoursItem
-                  key={hour.dt}
-                  hour={hourlyDateConverter(hour.dt)}
-                  type={hour.weather[0].main}
-                  degree={kelvinToCelcius(hour.temp)}
+                  key={index}
+                  hour={hourlyDateConverter(hour?.dt)}
+                  type={hour?.weather[0].main}
+                  degree={kelvinToCelcius(hour?.temp)}
                 />
               );
             })}

@@ -1,29 +1,31 @@
 import React, { useEffect } from "react";
 import classes from "./WeatherNav.module.css";
 import WeatherNavLink from "./WeatherNavLink";
-import { useContext, useState } from "react";
+import { useContext, useState, useCallback } from "react";
 import Context from "../Utils/context";
 function WeatherNav() {
-  const { stateDataReducer: state } = useContext(Context);
+  const {
+    stateDataReducer: { daily },
+  } = useContext(Context);
   const [count, setCount] = useState(0);
   const [daysToDisplay, setDaysToDisplay] = useState([]);
   const [slide, setSlide] = useState();
 
-  const addToDisplay = (days) => {
-    const updatedDays = [];
-    for (let i = count; i <= count + 2; i++) {
-      updatedDays.push(days[i]);
-    }
-    return updatedDays;
-  };
-  console.log(state.daily, daysToDisplay);
+  const addToDisplay = useCallback(
+    (days) => {
+      const updatedDays = [];
+      for (let i = count; i <= count + 2; i++) {
+        updatedDays.push(days[i]);
+      }
+      return updatedDays;
+    },
+    [count]
+  );
+
   useEffect(() => {
-    setDaysToDisplay(addToDisplay(state.daily));
+    setDaysToDisplay(addToDisplay(daily));
     fadeClass();
-  }, [count, state.daily]);
-  const showClass = () => {
-    return classes.show;
-  };
+  }, [count, daily, addToDisplay]);
   const fadeClass = () => classes.slideFade;
   return (
     <div className={classes.container}>
@@ -43,13 +45,12 @@ function WeatherNav() {
         ></button>
         <div className={`${classes.linkContainer}`}>
           <div className={`${classes.linkContainer} ${slide}`}>
-            {daysToDisplay.map((day) => {
-              console.log(day);
+            {daysToDisplay.map((day, index) => {
               return (
                 <WeatherNavLink
-                  key={day.dt}
+                  key={index}
                   dayData={day}
-                  day={day.dt}
+                  day={day?.dt}
                 ></WeatherNavLink>
               );
             })}
@@ -58,7 +59,7 @@ function WeatherNav() {
         <button
           className={classes.right_btn}
           onClick={() => {
-            count <= state.daily.length / 2 && setCount(count + 1);
+            count <= daily.length / 2 && setCount(count + 1);
             setSlide(() => classes.slideToRight);
             setTimeout(() => {
               setSlide("");

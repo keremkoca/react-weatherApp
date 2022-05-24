@@ -11,11 +11,13 @@
 }
 .titleContainer i {
   color: rgba(255, 255, 255, 0.2);
-  font-size: 1.7em;
+  font-size: 1.2em;
 }
 .titleCityName {
+  font-size: 1.5em;
   margin: 10px 5px 0px 5px;
 }
 .titleCountryName {
+  font-size: 1.2em;
   margin: 10px 5px 0px 5px;
 }

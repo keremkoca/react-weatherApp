@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
 import classes from "./CityInfo.module.css";
 import Context from "../Utils/context";
-const dateConverter = (date) => {
-  const newDate = new Date(date * 1000);
-  const [hour, minutes] = [newDate.getHours(), newDate.getMinutes()];
-  return `${hour}:${minutes} ${hour < 12 ? "am" : "pm"}`;
-};
+
 const kelvinToCelcius = (data) => Math.round(data - 273.15).toFixed(0);
+
 function CityInfo() {
   const { stateDataReducer: state } = useContext(Context);
   return (

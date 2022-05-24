@@ -13,16 +13,16 @@
 }
 
 .date {
-  margin-bottom: 10px;
+  font-size: 0.9em;
+  margin-bottom: 2px;
 }
 .icon {
   position: relative;
   color: #161616;
   width: 12em;
   height: 10em;
-  font-size: 1.5em; /* control icon size here */
   font-size: 0.2em;
 }
 .dateData {
-  margin-top: 20px;
+  margin-top: 10px;
 }

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 10px;
   align-items: center;
   width: 400px;
   background-color: transparent;
@@ -12,7 +12,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
   background-color: transparent;
 }
 .navContainerHeader {
@@ -23,7 +22,7 @@
   margin: 0;
   color: white;
   margin-left: 10px;
-  font-size: 18px;
+  font-size: 1em;
 }
 .navItemContainer {
   display: flex;

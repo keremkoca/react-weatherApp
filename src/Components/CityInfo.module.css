@@ -4,9 +4,13 @@
   justify-content: center;
   align-items: center;
   color: white;
+  margin-bottom: 5px;
+}
+.info_condition {
+  font-size: 1.4em;
 }
 .info_degree {
-  font-size: 100px;
+  font-size: 3em;
 }
 .info_bottom_container {
   display: flex;

@@ -9,8 +9,8 @@ const API_KEY = "5711a2c595f4af4f4115773f743ecbdc";
 function WeatherForecasts() {
   const { stateDataReducer: state, dispatchDataReducer: dispatch } =
     useContext(Context);
-  const lat = Math.round(state.generalData.coord.lat);
-  const lon = Math.round(state.generalData.coord.lon);
+  let lat = Math.round(state.coord.lat);
+  let lon = Math.round(state.coord.lon);
   const FULL_API_URL = `${API_URL}lat=${lat}&lon=${lon}&appid=${API_KEY}`;
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
@@ -26,7 +26,7 @@ function WeatherForecasts() {
       .catch((error) => {
         console.log(error);
       });
-  }, [lat, lon]);
+  }, [lat, lon, FULL_API_URL, dispatch]);
 
   return (
     <div className={classes.container}>

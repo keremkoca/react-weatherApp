@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 20px;
+  margin-top: 10px;
   width: 100%;
 }
 .navContainer {
@@ -25,7 +25,7 @@
   margin: 0;
   color: white;
   margin-left: 10px;
-  font-size: 18px;
+  font-size: 1em;
 }
 .left_btn {
   border-left: none;

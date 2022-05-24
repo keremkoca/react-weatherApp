@@ -18,18 +18,18 @@
 }
 .hour {
   margin-top: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 2px;
+  font-size: 1em;
 }
 .icon {
   position: relative;
   color: #161616;
   width: 12em;
   height: 10em;
-  font-size: 1.5em; /* control icon size here */
   font-size: 0.2em;
 }
 .desc {
-  font-size: 20px;
+  font-size: 1em;
   margin-top: 10px;
   margin-left: 3px;
 }

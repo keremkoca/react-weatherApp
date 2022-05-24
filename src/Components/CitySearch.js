@@ -7,7 +7,7 @@ const API_KEY = "4c0c41e683cd64751a875280cff3da0e";
 
 function CitySearch(props) {
   const { dispatchDataReducer: dispatch } = useContext(Context);
-  const { setIsLoaded } = props;
+  // const { setIsLoaded } = props;
   const [city, setCity] = useState("Istanbul");
   const LOCATION_CODE = city;
   const FULL_API_URL = `${API_URL}?q=${LOCATION_CODE}&appid=${API_KEY}`;
@@ -18,7 +18,7 @@ function CitySearch(props) {
       .get(FULL_API_URL)
       .then((response) => {
         dispatch({ type: "ON_LOAD", payload: response.data });
-        setIsLoaded(true);
+        // setIsLoaded(true);
         setCity("");
       })
       .catch((error) => {

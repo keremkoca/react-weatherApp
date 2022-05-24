@@ -13,7 +13,6 @@ const API_KEY = "4c0c41e683cd64751a875280cff3da0e";
 function WeatherApp() {
   const { stateDataReducer: state, dispatchDataReducer: dispatch } =
     useContext(Context);
-  const [type, setType] = useState();
   const [isLoaded, setIsLoaded] = useState(false);
   const LOCATION_CODE = "Istanbul";
   const FULL_API_URL = `${API_URL}?q=${LOCATION_CODE}&appid=${API_KEY}`;
@@ -23,20 +22,16 @@ function WeatherApp() {
       .then((response) => {
         dispatch({ type: "ON_LOAD", payload: response.data });
         setIsLoaded(true);
-        setType(state.condition);
       })
       .catch((error) => {
         console.log(error);
       });
-  }, []);
-  useEffect(() => {
-    setType(state.condition);
-  }, [state]);
+  }, [dispatch, FULL_API_URL]);
   return (
     <div className={classes.appContainer}>
-      <CitySearch setIsLoaded={setIsLoaded} />
+      <CitySearch />
       <CityTitle />
-      {isLoaded && <WeatherIcon type={type}></WeatherIcon>}
+      {<WeatherIcon type={state.condition}></WeatherIcon>}
       <CityInfo></CityInfo>
       {isLoaded && <WeatherForecasts></WeatherForecasts>}
     </div>
